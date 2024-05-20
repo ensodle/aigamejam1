@@ -9,5 +9,12 @@ public class StartMenu: MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
+    public void HikayeButton()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void QuitButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

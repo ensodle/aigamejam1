@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/\u015Fehir.unity"
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Hikaye.unity
+    guid: 48bc9b0a0c49808408afdb65cb670ead
   m_configObjects: {}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class newplayercontrol : MonoBehaviour
 {
@@ -12,11 +13,23 @@ public class newplayercontrol : MonoBehaviour
     bool isGround;
     public Animator anim;
     public float velocityY ;
+    bool islive;
+
+    private void Start()
+    {
+        islive = true;
+    }
 
 
     void Update()
     {
-         if(Input.GetKeyDown(KeyCode.Space)&& isGround==true)
+       
+        if (islive == false)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)&& isGround==true)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpspeed);
             
@@ -28,6 +41,12 @@ public class newplayercontrol : MonoBehaviour
    
     void FixedUpdate()
     {
+        if (islive==false)
+        {
+            return;
+        }
+
+
         isGround = Physics2D.OverlapCircle(floorcheckpoint.position, 0.2f, Layername);
 
 
@@ -66,4 +85,26 @@ public class newplayercontrol : MonoBehaviour
             transform.localScale = new Vector3(-4f, 4f, 1f);
         }
     }
+
+    public void die()
+    {
+        islive = false;
+        anim.SetTrigger("die");
+        StartCoroutine(restart());
+    }
+
+    IEnumerator restart()
+    {
+        yield return new WaitForSeconds(2f);
+        islive = true;
+        SceneManager.LoadScene("þehir");
+    }
+
+
+
+
+
+
+
+
 }
